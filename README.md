@@ -32,19 +32,24 @@ runs our code. The point of this repo is to list what the Sony *can do* so the
 capability is visible when browsing the fabric — then we design use-cases against
 it. The adapter code lands here too once written, so it's a real repo regardless.
 
-## MQTT topics (proposed)
+## MQTT topics
 
-Shared vocabulary with [edge-net-hk-avr365](https://github.com/jackwaddington/edge-net-hk-avr365) —
-both amps honour the same topic shapes.
+Addressed by **capability**, not box name — `edge-net/avr/*`, shared with
+[edge-net-hk-avr365](https://github.com/jackwaddington/edge-net-hk-avr365). See
+[mqtt-contract D7](https://github.com/jackwaddington/edge-net/blob/main/docs/mqtt-contract.md).
+If both amps run at once, this unit's instance id is `sony` (`edge-net/avr/sony/*`).
 
 | Topic | Direction | Payload |
 | ----- | --------- | ------- |
-| `edge-net/sony/power`   | subscribe | `on` / `off` |
-| `edge-net/sony/input`   | subscribe | source name (e.g. `bd-dvd`, `game`, `tv`) |
-| `edge-net/sony/volume`  | subscribe | `up` / `down` / `0–100` |
-| `edge-net/sony/mute`    | subscribe | `on` / `off` / `toggle` |
-| `edge-net/sony/sound`   | subscribe | sound field (e.g. `dolby-surround`, `multi-stereo`) |
-| `edge-net/sony/state`   | publish   | current power/input/volume/mute (from notifications) |
+| `edge-net/avr/power`  | subscribe | `{"state":"on"}` / `off` |
+| `edge-net/avr/input`  | subscribe | `{"source":"bd-dvd"}` (`game`, `tv`, …) |
+| `edge-net/avr/volume` | subscribe | `{"level":42}` or `up` / `down` |
+| `edge-net/avr/mute`   | subscribe | `on` / `off` / `toggle` |
+| `edge-net/avr/sound`  | subscribe | sound field (`dolby-surround`, `multi-stereo`) |
+| `edge-net/avr/state`  | publish   | sensed power/input/volume/mute (API notifications), retained |
+
+This unit **earns `/state`**: the Audio Control API pushes real state changes
+(front panel, remote), so the feedback is honest — see D7.
 
 ## Status
 
