@@ -5,7 +5,7 @@ A network-native AV receiver node on [Edge-NET](https://github.com/jackwaddingto
 ## Hardware
 
 - **Sony STR-DN1080** — 7.2ch AV receiver with built-in WiFi + Ethernet
-- **No bridge hardware** — unlike the [HK AVR365](https://github.com/jackwaddington/edge-net-avr)
+- **No bridge hardware** — unlike the [HK AVR365](https://github.com/jackwaddington/edge-net-hk-avr365)
   (which needs a Pico W + MAX3232 to reach RS-232), the Sony is already on the
   network. Nothing of ours runs *on* it.
 
@@ -34,7 +34,7 @@ it. The adapter code lands here too once written, so it's a real repo regardless
 
 ## MQTT topics (proposed)
 
-Shared vocabulary with [edge-net-avr](https://github.com/jackwaddington/edge-net-avr) —
+Shared vocabulary with [edge-net-hk-avr365](https://github.com/jackwaddington/edge-net-hk-avr365) —
 both amps honour the same topic shapes.
 
 | Topic | Direction | Payload |
