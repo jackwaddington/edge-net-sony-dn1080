@@ -83,9 +83,26 @@ feeding speakers elsewhere, each switchable independently from the fabric.
 - Speaker calibration / DCAC setup is front-panel/OSD only
 - Firmware updates — leave to Sony
 
+## Verified from live unit (2026-06-21)
+
+API confirmed open on `http://192.168.0.6:10000/sony/*` — no auth/pairing required.
+
+Real source URI strings from `getCurrentExternalTerminalsStatus`:
+
+| Friendly name | Sony URI |
+| ------------- | -------- |
+| `tv`          | `extInput:tv` |
+| `bd-dvd`      | `extInput:bd-dvd` |
+| `game`        | `extInput:game` |
+| `sat-catv`    | `extInput:sat-catv` |
+| `bt`          | `extInput:btAudio` |
+| `sacd-cd`     | `extInput:sacd-cd` |
+| `video1`      | `extInput:video?port=1` |
+| `video2`      | `extInput:video?port=2` |
+
+Volume: zone 1 range 0–55 (step 1). Zone 2 + Zone 4 present (step 0 = fixed/passthrough).
+
 ## Open questions
 
-- Exact source-name strings the API expects (capture from a live unit)
-- Does External Control survive standby, or only respond when powered? (test)
+- Does External Control survive standby, or only respond when powered?
 - Worth modelling Zone 2 as its own capability vs. nested under this node?
-- Auth/pairing: does the DN1080 require a pairing handshake or open on the LAN?

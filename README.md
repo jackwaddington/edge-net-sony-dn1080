@@ -41,17 +41,18 @@ If both amps run at once, this unit's instance id is `sony` (`edge-net/avr/sony/
 
 | Topic | Direction | Payload |
 | ----- | --------- | ------- |
-| `edge-net/avr/power`  | subscribe | `{"state":"on"}` / `off` |
-| `edge-net/avr/input`  | subscribe | `{"source":"bd-dvd"}` (`game`, `tv`, …) |
+| `edge-net/avr/power` | subscribe | `{"state":"on"}` / `off` |
+| `edge-net/avr/input` | subscribe | `{"source":"bd-dvd"}` (`game`, `tv`, …) |
 | `edge-net/avr/volume` | subscribe | `{"level":42}` or `up` / `down` |
-| `edge-net/avr/mute`   | subscribe | `on` / `off` / `toggle` |
-| `edge-net/avr/sound`  | subscribe | sound field (`dolby-surround`, `multi-stereo`) |
-| `edge-net/avr/state`  | publish   | sensed power/input/volume/mute (API notifications), retained |
+| `edge-net/avr/mute` | subscribe | `on` / `off` / `toggle` |
+| `edge-net/avr/sound` | subscribe | sound field (`dolby-surround`, `multi-stereo`) |
+| `edge-net/avr/state` | publish | sensed power/input/volume/mute (API notifications), retained |
 
 This unit **earns `/state`**: the Audio Control API pushes real state changes
 (front panel, remote), so the feedback is honest — see D7.
 
 ## Status
 
-Scaffold — unit on the network, External Control to be enabled, adapter not yet
-written. Catalog in [CONTROLS.md](CONTROLS.md).
+API confirmed live at `192.168.0.6:10000` — no auth required, source URIs captured
+from live unit. Adapter written (`adapter/adapter.py`); deployed as LXC CT 210 on
+pve1 (192.168.0.60) via Terraform. Catalog in [CONTROLS.md](CONTROLS.md).
