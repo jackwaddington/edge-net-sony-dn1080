@@ -23,7 +23,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/jackwaddington/edge-net-avratest
+            ghcr.io/jackwaddington/edge-net-avr:latest
             ghcr.io/jackwaddington/edge-net-avr:${{ steps.meta.outputs.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
