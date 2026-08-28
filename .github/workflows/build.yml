@@ -1,0 +1,10 @@
+name: build
+on:
+  push:
+    branches: [main]
+jobs:
+  image:
+    uses: jackwaddington/infrastructure/.github/workflows/build-image.yml@main
+    secrets: inherit
+    with:
+      image_name: edge-net-avr
